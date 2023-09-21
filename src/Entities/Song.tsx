@@ -1,4 +1,4 @@
-export class Song{
+export default class Song{
     private _api_path: string = "";
     private _title: string = "";
     private _artist_names: string = "";
@@ -45,24 +45,3 @@ export class Song{
         this._song_samples = value;
     }
 }
-
-const test_song = new Song();
-test_song.api_path = "/songs/378195"
-test_song.artist_names = "Sia"
-test_song.title = "Chandelier"
-test_song.url = "https://genius.com/songs/378195/apple_music_player"
-
-//Samples
-const sample_1 = new Song()
-sample_1.title = "Sample_1"
-const sample_2 = new Song()
-sample_2.title = "Sample_2"
-const sample_3 = new Song()
-sample_3.title = "Sample_3"
-
-test_song.song_samples = [
-    sample_1,
-    sample_2,
-    sample_3
-]
-export default test_song;

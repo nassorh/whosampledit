@@ -6,7 +6,7 @@ import Song from '../Entities/Song'
 
 function Search() {
     const [search, setSearch] = useState<string>("")
-    const [songs, setSongs] = useState<typeof Song[] | null>([])    
+    const [songs, setSongs] = useState< Song[] | null>([])    
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const debouncedSearchValue = useDebounce(search)

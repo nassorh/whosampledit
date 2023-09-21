@@ -1,4 +1,4 @@
-import {Song} from '../Entities/Song'
+import Song from '../Entities/Song'
 
 interface IMusicAPI{
     searchSongs(query: string) : Promise<[]>

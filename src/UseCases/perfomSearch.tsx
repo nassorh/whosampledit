@@ -1,5 +1,5 @@
 import IMusicAPIAdapter from "../Adapaters/IMusicAPIAdapter";
-import { Song } from "../Entities/Song";
+import Song from "../Entities/Song";
 
 class SearchService{
     private musicAPIAdapter : IMusicAPIAdapter

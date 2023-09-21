@@ -1,4 +1,4 @@
-import {Song} from '../Entities/Song'
+import Song from '../Entities/Song'
 import IMusicAPI from '../ExternalServices/IMusicApi'
 
 interface IMusicAPIAdapter{
