@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import searchService from '../dependencies'
 import useDebounce from '../Hooks/useDebounce'
 import Song from '../Entities/Song'
+import './Search.css'
+import search_icon from './search.png'
 
 function Search() {
     const [search, setSearch] = useState<string>("")
@@ -46,16 +48,18 @@ function Search() {
     
     return (
         <div>
-            <Form>
-                <Form.Group className="mb-3" controlId="form.Song">
-                    <Form.Control 
-                        type="text" 
-                        placeholder="Enter a song" 
-                        value={search} 
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </Form.Group>
-            </Form>
+            <div className='search-bar-background'>
+                <div className='search-bar-icon'>
+                    <img src={search_icon}></img>
+                </div>
+                <input
+                    type="text" 
+                    placeholder="Search" 
+                    value={search} 
+                    onChange={(e) => setSearch(e.target.value)}
+                    className='search-bar-input'
+                />
+            </div>
             {content}
         </div>
     );
