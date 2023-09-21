@@ -1,8 +1,11 @@
-import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
+
 import searchService from '../dependencies'
 import useDebounce from '../Hooks/useDebounce'
+
 import Song from '../Entities/Song'
+import SearchCard from './SearchCard'
+
 import './Search.css'
 import search_icon from './search.png'
 
@@ -30,25 +33,24 @@ function Search() {
     }, [debouncedSearchValue]);
 
     let content;
+    console.log(content)
     if(isLoading){
         content = <p>Loading...</p>
-    }else if(content === null){
-        content = <div>
+    }else if(songs === null && debouncedSearchValue){
+        content = <div className="hinter-message">
                     <p>We couldn't find the song you were looking for.<br/>Please check your spelling and try again, or consider searching with a different song title or artist name.</p>
                 </div>
     }else{
         content = songs?.map((song,index) => (
-            <div key={index}>
-                <h3>{song.title}</h3>
-                <p>Artiist: {song.artist_names}</p>
-                <a href={song.url}>Lyrics</a>
-            </div>
+            <SearchCard 
+                song = {song}
+            />
         ))
     }
     
     return (
-        <div>
-            <div className='search-bar-background'>
+        <div className="search-wrapper">
+            <div className='search-bar-wrapper'>
                 <div className='search-bar-icon'>
                     <img src={search_icon}></img>
                 </div>
@@ -61,6 +63,7 @@ function Search() {
                 />
             </div>
             {content}
+
         </div>
     );
 }
