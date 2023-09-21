@@ -19,12 +19,14 @@ class GenuisApiAdapter implements IMusicAPIAdapter{
 
             const items: Song[] = result.map((resultItem: any) => {
                 const song = new Song();
-
-                song.api_path = resultItem.result.api_path;
-                song.title = resultItem.result.title;
-                song.artist_names = resultItem.result.artist_names;
-                song.url = resultItem.result.url;
-
+                
+                song.id = resultItem.result.id; 
+                song.api_path = resultItem.result.api_path; 
+                song.title = resultItem.result.title !== null ? resultItem.result.title : song.title; 
+                song.artist_names = resultItem.result.artist_names !== null ? resultItem.result.artist_names : song.artist_names; 
+                song.full_title = resultItem.result.full_title !== null ? resultItem.result.full_title : song.full_title; 
+                song.image_url = resultItem.result.song_art_image_thumbnail_url;
+                song.release_date = resultItem.result.release_date_for_display !== null ? resultItem.result.release_date_for_display : song.release_date
                 return song;
             });
 
