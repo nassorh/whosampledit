@@ -6,7 +6,7 @@ import Song from '../Entities/Song'
 
 function Search() {
     const [search, setSearch] = useState<string>("")
-    const [songs, setSongs] = useState< Song[] | null>([])    
+    const [songs, setSongs] = useState<Song[] | null>([])    
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const debouncedSearchValue = useDebounce(search)
@@ -23,12 +23,17 @@ function Search() {
             .catch((error) => {
                 console.log("Caught",error)
                 setIsLoading(false)
+                setSongs(null)
             });
     }, [debouncedSearchValue]);
 
     let content;
     if(isLoading){
         content = <p>Loading...</p>
+    }else if(content === null){
+        content = <div>
+                    <p>We couldn't find the song you were looking for.<br/>Please check your spelling and try again, or consider searching with a different song title or artist name.</p>
+                </div>
     }else{
         content = songs?.map((song,index) => (
             <div key={index}>
