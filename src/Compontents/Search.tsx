@@ -6,7 +6,7 @@ import useDebounce from '../Hooks/useDebounce'
 import Song from '../Entities/Song'
 import SearchCard from './SearchCard'
 
-import './Search.css'
+import './Search.scss'
 import search_icon from './search.png'
 
 function Search() {

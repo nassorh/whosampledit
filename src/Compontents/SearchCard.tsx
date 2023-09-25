@@ -1,5 +1,5 @@
 import Song from '../Entities/Song'
-import './SearchCard.css'
+import './SearchCard.scss'
 
 interface SearchCardProps {
     song: Song;
