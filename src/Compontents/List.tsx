@@ -68,9 +68,7 @@ export default function List( { data }: { data: Song[] | null } ){
             <span className="list-title">Song Title</span>
             <div className='list-wrapper'>
                 {
-                    isScrollLeft?
-                    (<ArrowBackIosOutlined className='slider-arrow left' onClick={() => handleClick("left")}/>)
-                    :null
+                    isScrollLeft && (<ArrowBackIosOutlined className='slider-arrow left' onClick={() => handleClick("left")}/>)
                 }
                 <div className="list-container">
                     <div className='list-slider' ref={listRef}>
@@ -78,9 +76,7 @@ export default function List( { data }: { data: Song[] | null } ){
                     </div>
                 </div>
                 {
-                    isScrollRight?
-                    (<ArrowForwardIosOutlined className='slider-arrow right' onClick={() => handleClick("right")}/>)
-                    :null
+                    isScrollRight && (<ArrowForwardIosOutlined className='slider-arrow right' onClick={() => handleClick("right")}/>)
                 }
             </div>
         </div>
