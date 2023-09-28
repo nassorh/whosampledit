@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import searchService from '../dependencies'
+import apiAdpater from '../dependencies'
 import useDebounce from '../Hooks/useDebounce'
 
 import Song from '../Entities/Song'
-import SearchCard from './SearchCard'
+import SearchCard from '../Compontents/SearchCard'
 
 import './Search.scss'
 import search_icon from './search.png'
@@ -19,8 +19,8 @@ function Search() {
     useEffect(() => {
         setIsLoading(true);
 
-        searchService
-            .performSearch(search)
+        apiAdpater
+            .searchSongs(search)
             .then((response) => {
                 setIsLoading(false)
                 setSongs(response)
