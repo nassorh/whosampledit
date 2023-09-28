@@ -36,7 +36,31 @@ class GenuisApi implements IMusicAPI{
                 return Promise.reject(new Error("No songs"));
             }
 
-            return response.data.response.hits;
+            return songs;
+        })
+        .catch((err) => {
+            throw err
+        })
+    }
+
+    searchSamples(id: string): Promise<[]> {
+        if (id.length === 0){
+            return Promise.reject(new Error("Query is empty"));
+        }
+
+        return axios
+        .get(`${this.baseUrl}/songs/${id}`,{
+            headers: {
+                Authorization: `Bearer ${this.accessToken}`
+            }
+        })
+        .then((response) => {
+            const songs = response.data.response.song.song_relationships[1].songs
+            if(songs.length === 0){
+                return Promise.reject(new Error("No songs"));
+            }
+
+            return songs;
         })
         .catch((err) => {
             throw err
