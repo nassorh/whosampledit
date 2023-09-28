@@ -1,14 +1,10 @@
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
 import ListItem from './ListItem'
+import Song from '../Entities/Song'
 import './List.scss'
 import { useRef, useState } from 'react';
-import { dir } from 'console';
 
-interface ListProps{
-    data : any[]
-}
-
-export default function List(props : ListProps){
+export default function List( { data }: { data: Song[] | null } ){
     const listRef = useRef<HTMLDivElement | null>(null);
 
     const [distanceFromStart, setDistanceFromStart] = useState(0);
@@ -58,9 +54,12 @@ export default function List(props : ListProps){
         }, 750);
       };
 
-    let ListItemDiv = props.data.map((item,index) => (
+    let ListItemDiv = data?.map((item,index) => (
         <ListItem 
-            image = {`https://loremflickr.com/320/240?random=${index}`}
+            id = {item.id}
+            title = {item.title}
+            image = {item.image_url}
+            artist_name = {item.artist_names}
         />
     ))
 
