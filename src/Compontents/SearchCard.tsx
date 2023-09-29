@@ -1,7 +1,7 @@
 import Song from '../Entities/Song'
 import './SearchCard.scss'
 
-import { Link } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 
 interface SearchCardProps {
     song: Song;
@@ -9,7 +9,11 @@ interface SearchCardProps {
 
 export default function SearchCard(props : SearchCardProps){
     return(
-        <Link to={`/sample/${props.song.id}`}>
+        <Link to={{
+            pathname: `sample/${props.song.id}`,
+            search: `?name=${props.song.title}`,
+        }}
+        >
             <div key={props.song.id} className='search_card'>
 
                 <div className='search_card-image-container'>

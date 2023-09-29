@@ -2,9 +2,16 @@ import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-materi
 import ListItem from './ListItem'
 import Song from '../Entities/Song'
 import './List.scss'
-import { useRef, useState } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function List( { data }: { data: Song[] | null } ){
+    //Get name parameter
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const song_title = queryParams.get('name');
+
     const listRef = useRef<HTMLDivElement | null>(null);
 
     const [distanceFromStart, setDistanceFromStart] = useState(0);
@@ -65,7 +72,7 @@ export default function List( { data }: { data: Song[] | null } ){
 
     return(
         <div className="list">
-            <span className="list-title">Song Title</span>
+            <span className="list-title">{song_title}</span>
             <div className='list-wrapper'>
                 {
                     isScrollLeft && (<ArrowBackIosOutlined className='slider-arrow left' onClick={() => handleClick("left")}/>)
