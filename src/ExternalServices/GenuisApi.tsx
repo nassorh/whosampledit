@@ -55,7 +55,7 @@ class GenuisApi implements IMusicAPI{
             }
         })
         .then((response) => {
-            const songs = response.data.response.song.song_relationships[1].songs
+            const songs = response.data.response.song.song_relationships[0].songs
             if(songs.length === 0){
                 return Promise.reject(new Error("No songs"));
             }
