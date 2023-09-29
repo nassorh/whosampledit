@@ -15,19 +15,20 @@ export default function Sample(){
 
     useEffect(() => {
         setIsLoading(true)
-
         const fetchData = async () => {
             if (param) {
                 searchService.searchSamples(param)
                     .then((result) => {
                         setSamples(result)
+                        setIsLoading(false);
                     })
                     .catch((error) => {
                         console.log(error)
                         setSamples(null)
+                        setIsLoading(false);
                     })
             }
-            setIsLoading(false);
+            
         };
         
         fetchData();
@@ -35,9 +36,9 @@ export default function Sample(){
 
     return(
         <div>
-            {!isLoading &&  samples === null && <p className='error-message'>Oops, it looks like we couldn't find any samples or data to display.</p> }
+            {!isLoading &&  samples === null && <p className='message'>Oops, it looks like we couldn't find any samples or data to display.</p> }
             {!isLoading &&  samples !== null && <List data = {samples} />}
-            {isLoading && <p>Fetching Samples</p>}
+            {isLoading && <p className='message'>Fetching Samples</p>}
         </div>
     )
 }
