@@ -18,10 +18,15 @@
             opacity: 0.8;
             
             .list-item-content-title{
+                max-width: 100%;
+                max-height: 50%;
                 padding-left: 0.5rem;
                 padding-top: 0.5rem;
                 color: #FCFCFC;
                 font-size: 1.2rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .list-item-content-artist{
