@@ -13,6 +13,11 @@
     .hinter-message{
         color: white;
     }
+
+    a {
+        color: inherit;
+        text-decoration: none !important;
+    }
 }
 
 @media (max-width: 768px) {
