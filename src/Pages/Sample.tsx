@@ -18,8 +18,14 @@ export default function Sample(){
 
         const fetchData = async () => {
             if (param) {
-                const result = await searchService.searchSamples(param);
-                setSamples(result)
+                searchService.searchSamples(param)
+                    .then((result) => {
+                        setSamples(result)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                        setSamples(null)
+                    })
             }
             setIsLoading(false);
         };
@@ -29,7 +35,8 @@ export default function Sample(){
 
     return(
         <div>
-            {!isLoading &&  <List data = {samples} />}
+            {!isLoading &&  samples === null && <p className='error-message'>Oops, it looks like we couldn't find any samples or data to display.</p> }
+            {!isLoading &&  samples !== null && <List data = {samples} />}
             {isLoading && <p>Fetching Samples</p>}
         </div>
     )
