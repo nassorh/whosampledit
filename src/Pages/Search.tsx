@@ -33,7 +33,6 @@ function Search() {
     }, [debouncedSearchValue]);
 
     let content;
-    console.log(content)
     if(isLoading){
         content = <p>Loading...</p>
     }else if(songs === null && debouncedSearchValue){
