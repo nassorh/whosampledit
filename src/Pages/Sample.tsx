@@ -1,10 +1,8 @@
-
-
-import Song from '../Entities/Song'
-
+//Externals
 import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 
+//Business Logic
 import searchService from '../dependencies'
 
 //Compontents
@@ -13,6 +11,9 @@ import Message from '../Compontents/Message'
 
 //Styling
 import './Sample.scss'
+
+//Entites
+import Song from '../Entities/Song'
 
 export default function Sample(){
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -40,6 +41,7 @@ export default function Sample(){
 
     return(
         <div>
+
             {!isLoading &&  samples === null && <Message type='hinter' text={"Oops, it looks like we couldn't find any samples or data to display."} />}
             {!isLoading &&  samples !== null && <List data = {samples} />}
             {isLoading && <p className='message'>Fetching Samples</p>}
