@@ -1,6 +1,16 @@
 * {
     margin: 0;
     padding: 0;
+    
+    .modal_div {
+        position: fixed;
+        top: 30vh;
+        left: 10%;
+        width: 80%;
+        z-index: 100;
+        overflow: hidden;
+        text-align: center;
+    }
 
     body{
         background-color: black !important;
@@ -10,7 +20,7 @@
         margin: 0 !important;
     }
 
-    .hinter-message{
+    .hinter{
         color: white;
     }
 

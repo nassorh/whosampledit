@@ -1,5 +1,4 @@
 import Song from '../Entities/Song'
-import './SearchCard.scss'
 
 import { Link  } from 'react-router-dom';
 
