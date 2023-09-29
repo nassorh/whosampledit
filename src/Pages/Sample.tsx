@@ -9,7 +9,7 @@ import { Link  } from 'react-router-dom';
 import searchService from '../dependencies'
 
 //Compontents
-import List from '../Compontents/List';
+import SampleSlider from '../Compontents/SampleSlider';
 import Message from '../Compontents/Message'
 
 //Styling
@@ -48,7 +48,7 @@ export default function Sample(){
                 <ArrowBackIosIcon fontSize="large" sx={{ color: common.white, marginLeft:'6.5rem', marginTop: '2rem', marginBottom:'2rem' }} />
             </Link>
             {!isLoading &&  samples === null && <Message type='hinter' text={"Oops, it looks like we couldn't find any samples or data to display."} />}
-            {!isLoading &&  samples !== null && <List data = {samples} />}
+            {!isLoading &&  samples !== null && <SampleSlider samples = {samples} />}
             {isLoading && <p className='message'>Fetching Samples</p>}
         </div>
     )
