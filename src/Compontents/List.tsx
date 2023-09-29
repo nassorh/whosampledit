@@ -1,7 +1,6 @@
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
 import ListItem from './ListItem'
 import Song from '../Entities/Song'
-import './List.scss'
 
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -60,6 +59,13 @@ export default function List( { data }: { data: Song[] | null } ){
             setIsTransitioning(false);
         }, 750);
       };
+
+    useEffect(() => {
+    // Check if right arrow should be on the screen when the component loads
+    if (isScrollRight) {
+        //TODO: Logic to handle if right arrow should be on the screen
+    }
+    }, []);
 
     let ListItemDiv = data?.map((item,index) => (
         <ListItem 
